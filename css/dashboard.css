@@ -1,0 +1,130 @@
+/* Style global */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+    background-color: #333;
+    color: #fff;
+    padding: 1em 0;
+    position: relative;
+}
+
+h1 {
+    flex: 1; /* Allow h1 to flex and fill available space */
+    margin-right: 10px; /* Add a right margin for spacing */
+}
+
+#ouvrir-formulaire {
+    padding: 10px 15px; /* Add some padding for visual comfort */
+    background-color: #4CAF50; /* Green color for the button */
+    color: white; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Indicate clickable behavior */
+}
+
+.container_principale {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#form-modifier {
+    display: none;
+}
+
+aside {
+    float: left;
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 1em;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin-bottom: 1em;
+}
+
+nav a {
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color: #333;
+}
+
+nav a:hover {
+    background-color: #eee;
+}
+
+nav li.active a {
+    background-color: #555;
+    color: #fff;
+}
+
+main {
+    margin-left: 220px;
+    padding: 1em;
+    margin-bottom: 50px;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.section-active {
+    background-color: #f5f5f5;
+}
+
+.section-filtres, .section-taches {
+    border: 1px solid #ddd;
+    padding: 1em;
+}
+
+.statistiques ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.statistiques li {
+    margin-bottom: 0.5em;
+}
+
+.liste-taches table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.liste-taches th, .liste-taches td {
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    text-align: left;
+}
+
+.liste-taches th {
+    background-color: #f0f0f0;
+}
+
+.liste-taches a {
+    text-decoration: none;
+    color: #333;
+}
+
+.liste-taches a:hover {
+    color: #007bff;
+}
