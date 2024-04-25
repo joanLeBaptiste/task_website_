@@ -79,5 +79,3 @@ if($user->emailExists() && password_verify($data->password, $user->password)){
         "db_PWD" =>$user->password,
         "data_PWD" => $data->password));
 }
-
-

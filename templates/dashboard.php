@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de bord des tâches</title>
     <!-- <link rel="stylesheet" href="../css/dashboard.css"> -->
+    <script src="../javascript/Action.js"></script>
     <script src="../javascript/script.js"></script>
     <script src="../javascript/createTask.js"></script>
     <script src="../javascript/getUser.js"></script>
     <script src="../javascript/createdTask.js"></script>
-
-
+    <script src="../javascript/statistiques.js"></script>
 
     <style>
         /* Style global */
@@ -239,9 +239,9 @@
     <section class="section-active">
         <h2>Tableau de bord</h2>
         <ul>
-            <li><button onclick="fetchUserNames();ouvrirFormulaire('form-creer-tache')">Creer une tache</button></li>
-            <li><button onclick="tableau2()">tache crée</button></li>
-            <li><button onclick="tableau()">mes taches</button></li>
+            <li><button onclick="fetchUserNames();ouvrirFormulaire('form-creer-tache');">Creer une tache</button></li>
+            <li><button onclick="tableauCreated();">tache crée</button></li>
+            <li><button onclick="tableau();">mes taches</button></li>
         </ul>
         <div id="form-creer-tache" style="display: none;">
             <form id="formulaire-creer-tache">
@@ -267,42 +267,47 @@
     <div class="statistiques">
         <h2>Statistiques</h2>
         <ul>
-            <li>Nombre total de tâches: 3</li>
-            <li>Tâches en cours: 1</li>
-            <li>Tâches terminées: 1</li>
-            <li>Tâches à faire: 1</li>
+            <li>Nombre total de tâches:</li>
+            <li>Tâches en cours: </li>
+            <li>Tâches terminées: </li>
+            <li>Tâches à faire: </li>
         </ul>
+        <button type="button" onclick="updateStatistics();">afficher statistiques</button>
+
     </div>
 
 </aside>
 
 <main>
-
-
-    <section class="section-filtres">
+    <section class="section-filtres" style="display: flex; flex-direction: column;">
         <h2>Filtres</h2>
-        <form>
-            <label for="statut2">Statut:</label>
-            <select id="statut2">
-                <option value="">Tous</option>
-                <option value="en-cours">En cours</option>
-                <option value="terminee">Terminée</option>
-                <option value="a-faire">À faire</option>
-            </select>
+        <div class="filtre-container" style="display: flex; align-items: center;">
+            <div style="margin-right: 10px;">
+                <label for="statut2">Statut:</label>
+                <select id="statut2">
+                    <option value="">Tous</option>
+                    <option value="in_progress">in_progress</option>
+                    <option value="pending">pending</option>
+                    <option value="completed">completed</option>
+                </select>
+            </div>
 
-            <label for="assigne">Assigné à:</label>
-            <input type="text" id="assigne">
+            <div style="margin-right: 10px;">
+                <label for="assigne">Assigné à:</label>
+                <input type="text" id="assigne">
+            </div>
 
-            <button type="submit">Filtrer</button>
-        </form>
+            <button id="filtrer">Filtrer</button>
+        </div>
     </section>
 
     <section class="section-taches">
         <div class="liste-taches">
             <h2>tableau des tâches</h2>
-            <table>
+            <table id="table-Tache">
                 <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Titre</th>
                     <th>Description</th>
                     <th>Statut</th>
