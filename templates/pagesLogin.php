@@ -6,71 +6,11 @@
     <title>Système de Gestion de Tâches - Connexion</title>
     <link rel="stylesheet" href="../css/style.css">
 
-    <script>
-        // La fonction setCookie() que vous souhaitez intégrer
-        function setCookie(cname, cvalue, exdays) {
-            var d = new Date();
-            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-            var expires = "expires=" + d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
-
-        function send() {
-            document.getElementById("submitButton").disabled = true;
-            // Récupérer les données du formulaire
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            // Créer un objet représentant les données de l'utilisateur
-            const user = { email: email, password: password };
-
-            // Convertir l'objet en chaîne JSON
-            const body = JSON.stringify(user);
-
-            // Envoyer les données au serveur via fetch
-            fetch("../pages/login.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: body
-            })
-                .then(response => {
-                    // Vérifier si la réponse est OK
-                    if (response.ok) {
-                        // Extraire les données JSON de la réponse
-                        return response.json();
-                    } else {
-                        // Si la réponse n'est pas OK, rejeter la promesse avec une erreur
-                        throw new Error(`Erreur HTTP ${response.status}`);
-                    }
-                })
-                .then(data => {
-                    // Traiter les données reçues
-                    const token = data.jwt;
-                    const message = data.message;
-                    console.log("Token: " + token+ "message"+message);
-                    alert(message+token);
-                    // Créer le cookie JWT
-                    const now = new Date();
-                    const expires = new Date(now.getTime() + 3600000); // 1 heure en millisecondes
-                    setCookie('jwt', token, 1);
-                    console.log("Cookie: " + document.cookie);
-                    // Rediriger l'utilisateur vers dashboard.php
-                    window.location.href = "dashboard.php";
-                })
-                .catch(error => {
-                    // Gérer les erreurs
-                    console.error("Erreur lors de la requête fetch:", error);
-                    alert(`Erreur lors de la connexion: ${error.message}`);
-                });
-        }
-
-    </script>
+    <script src="../javascript/connexion.js"></script>
 </head>
 <body>
 
-<?php include('../partials/header.php'); ?>
+<?php include('../head-foot/header.php'); ?>
 
 <div class="container">
     <h2>Connexion</h2>
@@ -98,6 +38,6 @@
 
 
 
-<?php include('../partials/footer.php'); ?>
+<?php //include('../head-foot/footer.php'); ?>
 
 

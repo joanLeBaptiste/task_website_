@@ -59,3 +59,30 @@ th {
     background-color: #f2f2f2;
 }
 
+
+footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+    z-index: 1000;
+}
+
+.container-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logoutForm {
+    margin-right: 1em;
+}
+
+.logout-p {
+    margin-left: 1em;
+}
+

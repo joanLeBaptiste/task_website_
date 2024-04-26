@@ -1,13 +1,12 @@
-<footer>
-    <link rel="stylesheet" href="../css/style.css">
-    <div class="container">
-        <!-- Formulaire pour déclencher la déconnexion -->
-        <form id="logoutForm" method="post" style="margin-left: 100px;">
-            <button type="submit">Se déconnecter</button>
-        </form>
-        <p style="margin-left: 100px;">&copy; <?php echo date("Y"); ?> Système de Gestion de Tâches_Joan-Baptiste Ferrando </p>
-    </div>
-</footer>
+    <footer>
+       <!-- <link rel="stylesheet" href="../css/style.css"> -->
+        <div class="container-footer">
+            <form id="logoutForm" method="post" style="margin-left: 100px;">
+                <button type="submit">Se déconnecter</button>
+            </form>
+            <p id="logout-p" style="margin-left: 200px;">&copy; <?php echo date("Y"); ?> Système de Gestion de Tâches_Joan-Baptiste Ferrando </p>
+        </div>
+    </footer>
 </body>
 <script>
     // Fonction pour supprimer le cookie JWT lors de la déconnexion

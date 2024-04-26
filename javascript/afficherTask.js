@@ -2,7 +2,7 @@ function tableauCreated(){
     const tableBody = document.querySelector('.liste-taches table tbody');
 
     fetch('../pages/createdTask.php')
-        .then(response => response.json()) // Transforme la réponse en JSON
+        .then(response => response.json())
         .then(data => {
             data.forEach(task => {
                 const row = document.createElement('tr');
@@ -23,7 +23,7 @@ function tableauCreated(){
             });
         })
         .catch(error => {
-            console.error('Erreur lors de la récupération des données :', error);
+            console.error('Erreur lors de récupération des données :', error);
         });
 
 }

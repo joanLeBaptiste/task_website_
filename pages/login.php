@@ -1,5 +1,4 @@
 <?php
-// required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
@@ -13,22 +12,16 @@ require_once ('../objects/User.php');
 require_once ('../objects/Session.php');
 use \JWTLib\JWT;
 
-// get database connection
 $database = new Database();
 $db = $database->getConnection();
 
-// instantiate user object
 $user = new User($db);
 $Session = new Session();
 
-// get posted data
 $data = json_decode(file_get_contents("php://input"));
 
-// set product property values
 $user->email = $data->email;
-//$email_exists = 0;
-
-// check if email exists and if password is correct
+//creation du jeton jwt, dure 1h
 if($user->emailExists() && password_verify($data->password, $user->password)){
     $token = array(
         "iat" => $issued_at,
@@ -40,11 +33,11 @@ if($user->emailExists() && password_verify($data->password, $user->password)){
             "email" => $user->email
         )
     );
-    // set response code
-    http_response_code(200);
-    // generate jwt
-    $jwt = JWT::encode($token, $key);
 
+    http_response_code(200);
+
+    $jwt = JWT::encode($token, $key);
+    // on va inserer la session active dans la BDD
     $expiry_time = date('Y-m-d H:i:s', $expiration_time);
     $user_session_query = "INSERT INTO user_sessions (user_id, token, expiry_time) VALUES (:user_id, :token, :expiry_time)";
     $user_session_stmt = $db->prepare($user_session_query);
@@ -52,28 +45,22 @@ if($user->emailExists() && password_verify($data->password, $user->password)){
     $user_session_stmt->bindParam(':token', $jwt);
     $user_session_stmt->bindParam(':expiry_time', $expiry_time);
     if ($user_session_stmt->execute()) {
-        // Stocker des informations de session dans la session PHP
         $Session->set('id', $user->id);
         $Session->set('email', $user->email);
         $Session->setJWT($jwt);
-        //print_r($_SESSION);
-        //session_regenerate_id();
-
+        //reponse au JS
         echo json_encode(
             array(
-                "message" => $user->email." puis:".$data->email."ensuite :",//Session::get('users', "email"),
-                "jwt" => $jwt
+                "message" => "login reussi",
+                "TOKEN jwt: " => $jwt
             )
         );
     } else {
-        // Erreur lors de l'insertion dans la base de données
         http_response_code(500);
         echo json_encode(array("message" => "Error inserting session data."));
     }
 } else {
-    // set response code
     http_response_code(401);
-    // tell the user login failed
     echo json_encode(array("message" => "Login failed.",
         "email_exists" => $user->emailExists(),
         "db_PWD" =>$user->password,

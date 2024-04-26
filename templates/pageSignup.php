@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Système de Gestion de Tâches - Inscription</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-<?php include('../partials/header.php'); ?>
+
+<?php include('../head-foot/header.php'); ?>
 
 <div class="container">
     <h2>Inscription</h2>
@@ -34,54 +26,16 @@
             <span class="help-block"></span>
         </div>
         <div class="form-group">
-            <button type="button" onclick="createUser()">S'inscrire</button>
+            <button type="button" onclick="creerUSer()">S'inscrire</button>
             <button type="reset">Réinitialiser</button>
         </div>
         <p>Vous avez déjà un compte? <a href="../templates/pagesLogin.php">Connectez-vous ici</a>.</p>
     </form>
 </div>
 
-<?php include('../partials/footer.php'); ?>
+<?php //include('../head-foot/footer.php'); ?>
+<script src="../javascript/creerUser.js"></script>
 
-<script>
-
-    function createUser() {
-        const username = document.getElementById('username').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const confirm_password = document.getElementById('confirm_password').value;
-
-        if (password !== confirm_password) {
-            alert("Les mots de passe ne correspondent pas.");
-            return;
-        }
-
-        const data = {
-            username: username,
-            email: email,
-            password: password
-        };
-
-        fetch('../pages/signup.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(result => {
-                console.log(data);
-                console.log(result.message);
-                alert(result.message);
-                window.location.href = "../templates/pagesLogin.php";
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }
-
-</script>
 
 </body>
 </html>

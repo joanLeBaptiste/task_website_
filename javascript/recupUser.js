@@ -1,4 +1,4 @@
-function fetchUserNames() {
+function parcourUserName() {
     fetch('../pages/getUserID&name.php')
         .then(response => response.json())
         .then(data => {
@@ -7,12 +7,11 @@ function fetchUserNames() {
 
             data.forEach(user => {
                 const option = document.createElement('option');
-                option.value = user.id; // Utilisez l'ID de l'utilisateur comme valeur
-                option.textContent = user.name; // Utilisez le nom de l'utilisateur comme texte de l'option
+                option.value = user.id;
+                option.textContent = user.name;
                 selectElement.appendChild(option);
             });
         })
         .catch(error => console.error('Erreur lors de la récupération des noms d\'utilisateur :', error));
 }
 
-// Appelez la fonction pour récupérer les noms d'utilisateur lors du chargement de la page

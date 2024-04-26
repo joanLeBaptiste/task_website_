@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const filterButton = document.querySelector('.section-filtres button');
-    filterButton.addEventListener('click', applyFilter);
+    filterButton.addEventListener('click', filtre);
 
-    // Fonction pour appliquer le filtrage
-    function applyFilter() {
+    function filtre() {
         const statusSelect = document.getElementById('statut2');
         const assignedInput = document.getElementById('assigne');
         const tableRows = document.querySelectorAll('.liste-taches table tbody tr');
@@ -19,9 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const assignedToMatch = assignedTo === '' || rowAssignedTo.includes(assignedTo);
 
             if (statusMatch && assignedToMatch) {
-                row.style.display = ''; // Afficher la ligne si les critères de filtrage correspondent
+                row.style.display = '';
             } else {
-                row.style.display = 'none'; // Masquer la ligne si les critères de filtrage ne correspondent pas
+                row.style.display = 'none';
             }
         });
     }

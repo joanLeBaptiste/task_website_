@@ -1,21 +1,21 @@
 function updateStatistics() {
     const statisticsContainer = document.querySelector('.statistiques ul');
     const tableRows = document.querySelectorAll('.liste-taches table tbody tr');
-    let pendingCount = 0;
-    let inProgressCount = 0;
-    let completedCount = 0;
+    let pending = 0;
+    let inProgress = 0;
+    let completed = 0;
 
     tableRows.forEach(row => {
         const status = row.querySelector('td:nth-child(4)').textContent.trim();
         switch (status) {
             case 'pending':
-                pendingCount++;
+                pending++;
                 break;
             case 'in_progress':
-                inProgressCount++;
+                inProgress++;
                 break;
             case 'completed':
-                completedCount++;
+                completed++;
                 break;
             default:
                 break;
@@ -23,12 +23,12 @@ function updateStatistics() {
     });
 
     const totalCount = tableRows.length;
-    const todoCount = pendingCount;
+    const todoCount = pending;
 
     statisticsContainer.innerHTML = `
         <li>Nombre total de tâches: ${totalCount}</li>
-        <li>Tâches en cours: ${inProgressCount}</li>
-        <li>Tâches terminées: ${completedCount}</li>
+        <li>Tâches en cours: ${inProgress}</li>
+        <li>Tâches terminées: ${completed}</li>
         <li>Tâches à faire: ${todoCount}</li>
     `;
 }

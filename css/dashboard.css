@@ -1,37 +1,43 @@
-/* Style global */
 body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 }
 
+
 header {
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Align items vertically */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #333;
     color: #fff;
     padding: 1em 0;
     position: relative;
+    text-align: center;
 }
 
 h1 {
-    flex: 1; /* Allow h1 to flex and fill available space */
-    margin-right: 10px; /* Add a right margin for spacing */
-}
-
-#ouvrir-formulaire {
-    padding: 10px 15px; /* Add some padding for visual comfort */
-    background-color: #4CAF50; /* Green color for the button */
-    color: white; /* White text color */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Add rounded corners */
-    cursor: pointer; /* Indicate clickable behavior */
+    margin: 0 auto;
+    flex-grow: 1;
 }
 
 .container_principale {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+#ouvrir-formulaire {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 1em;
 }
 
 #form-modifier {
@@ -127,4 +133,33 @@ h2 {
 
 .liste-taches a:hover {
     color: #007bff;
+}
+
+
+
+
+footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+    z-index: 1000;
+}
+
+.container-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logoutForm {
+    margin-right: 1em;
+}
+
+.logout-p {
+    margin-left: 1em;
 }
