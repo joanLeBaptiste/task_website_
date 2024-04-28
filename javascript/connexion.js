@@ -32,7 +32,7 @@ function send() {
             const token = data.jwt;
             const message = data.message;
             console.log("Token: " + token+ "message"+message);
-            alert(message+token);
+            alert("login reussi");
             const now = new Date();
             const expires = new Date(now.getTime() + 3600000);
             setCookie('jwt', token, 1);

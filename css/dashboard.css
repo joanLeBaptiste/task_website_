@@ -1,10 +1,11 @@
 body {
-    font-family: sans-serif;
+    font-family: "Courier New", Courier, monospace;
+    background-color: #000;
     margin: 0;
     padding: 0;
+    color: #fff;
     min-height: 100vh;
 }
-
 
 header {
     display: flex;
@@ -29,11 +30,10 @@ h1 {
     width: 100%;
 }
 
-
 #ouvrir-formulaire {
     padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #4CAF50; /* Vert */
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -47,7 +47,7 @@ h1 {
 aside {
     float: left;
     width: 200px;
-    background-color: #f0f0f0;
+    background-color: #000;
     padding: 1em;
 }
 
@@ -65,11 +65,11 @@ nav a {
     display: block;
     padding: 0.5em 1em;
     text-decoration: none;
-    color: #333;
+    color: #fff;
 }
 
 nav a:hover {
-    background-color: #eee;
+    background-color: #555;
 }
 
 nav li.active a {
@@ -93,12 +93,13 @@ h2 {
 }
 
 .section-active {
-    background-color: #f5f5f5;
+    background-color: #333;
 }
 
 .section-filtres, .section-taches {
     border: 1px solid #ddd;
     padding: 1em;
+    background-color: #000;
 }
 
 .statistiques ul {
@@ -109,6 +110,11 @@ h2 {
 
 .statistiques li {
     margin-bottom: 0.5em;
+}
+
+.liste-taches {
+    max-height: 350px;
+    overflow-y: auto;
 }
 
 .liste-taches table {
@@ -123,20 +129,18 @@ h2 {
 }
 
 .liste-taches th {
-    background-color: #f0f0f0;
+    background-color: #000;
+    color: #fff;
 }
 
 .liste-taches a {
     text-decoration: none;
-    color: #333;
+    color: #fff;
 }
 
 .liste-taches a:hover {
     color: #007bff;
 }
-
-
-
 
 footer {
     position: fixed;

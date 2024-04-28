@@ -17,7 +17,7 @@
     <p>Veuillez remplir vos informations de connexion.</p>
     <form id="loginForm">
         <div class="form-group">
-            <label>Nom d'utilisateur</label>
+            <label>Email</label>
             <input type="text" name="email" id="email">
             <span class="help-block" id="usernameErr"></span>
         </div>

@@ -51,8 +51,8 @@ if($user->emailExists() && password_verify($data->password, $user->password)){
         //reponse au JS
         echo json_encode(
             array(
-                "message" => "login reussi",
-                "TOKEN jwt: " => $jwt
+                "message" => "login reussi, jwt:  ",
+                "jwt" => $jwt
             )
         );
     } else {
